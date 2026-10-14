@@ -1,0 +1,8 @@
+flow require human approval for writeback
+    """Block any Workday write-back that lacks a valid, logged human approval."""
+    $intent = await SelfCheckWriteIntentAction(action=$bot_action)
+    if $intent == "write"
+        $ok = await ValidateApprovalTokenAction(token=$approval_token)
+        if not $ok
+            bot say "Write-back blocked: no valid human approval."
+            abort

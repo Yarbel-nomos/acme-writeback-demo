@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "onFailure": "block",
+            "command": "f=$(jq -r '.tool_input.file_path // empty'); case \"$f\" in *config/writeback/*|*services/writeback_service.py) echo 'Blocked: this file is the control \"Human-in-the-Loop Approval Gate\" from your Nomos safety case (prevents the loss: Write-back executes without human approval). Changes are decided by the HR Systems Owner, with the Nomos safety lead. Safe path: queue the change as a pending write-back and route it through the approval step, so the approver releases it.' >&2; exit 2;; esac"
+          }
+        ]
+      }
+    ]
+  }
+}

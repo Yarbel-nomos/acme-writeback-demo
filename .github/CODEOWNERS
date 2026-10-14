@@ -1,0 +1,9 @@
+# Nomos control: Human-in-the-Loop Approval Gate
+# Replace @your-org/control-owners with the GitHub team for: the HR Systems Owner, with the Nomos safety lead.
+# Then turn on "Require review from Code Owners" on the main branch.
+/config/writeback/              @your-org/control-owners
+/services/writeback_service.py  @your-org/control-owners
+/AGENTS.md                      @your-org/control-owners
+/CLAUDE.md                      @your-org/control-owners
+/.claude/settings.json          @your-org/control-owners
+/.github/CODEOWNERS             @your-org/control-owners
